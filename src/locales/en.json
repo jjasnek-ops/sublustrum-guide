@@ -36,8 +36,8 @@
     "share": "Share",
     "copyLink": "Copy link",
     "copied": "Copied!",
-    "consentText": "We use cookies for analytics and ads to keep this site free.",
-    "accept": "Accept",
+    "consentText": "With your permission, Google Analytics uses cookies to measure visits. You can read all guides without accepting.",
+    "accept": "Allow analytics",
     "decline": "Decline",
     "consentTitle": "Cookies",
     "bossCard": {

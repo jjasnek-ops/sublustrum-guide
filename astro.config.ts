@@ -11,6 +11,14 @@ import { CONTENT_TYPES } from './src/config/navigation';
 import { siteUrl } from './src/config/site';
 import { fallbackDetailPaths } from './src/lib/fallback-paths';
 
+// Direct-upload and CI builds run Astro outside Wrangler. Use the same public
+// measurement ID declared in Wrangler rather than maintaining a second ID.
+if (!process.env.PUBLIC_GA_ID && fs.existsSync('wrangler.toml')) {
+  const configuredGaId = fs.readFileSync('wrangler.toml', 'utf8')
+    .match(/^PUBLIC_GA_ID\s*=\s*"(G-[A-Z0-9]+)"\s*$/m)?.[1];
+  if (configuredGaId) process.env.PUBLIC_GA_ID = configuredGaId;
+}
+
 /**
  * Build a map of page path → lastmod ISO date, read from MDX frontmatter
  * (`lastModified` falling back to `date`). Used by the sitemap `serialize`
