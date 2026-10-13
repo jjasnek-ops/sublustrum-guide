@@ -20,5 +20,6 @@ for(const url of locs){const p=new URL(url).pathname;const local=p==='/'?'dist/i
 if(fs.existsSync('dist/guides/chapter-one-walkthrough/index.html'))throw new Error('Draft leaked into production');
 if(!fs.existsSync('dist/sitemap.xml'))throw new Error('Requested sitemap alias missing');
 const robots=fs.readFileSync('dist/robots.txt','utf8');if(!robots.includes('Allow: /')||!robots.includes(origin+'/sitemap-index.xml'))throw new Error('Invalid robots');
+fs.mkdirSync('reports', { recursive: true });
 fs.writeFileSync('reports/production-audit.json',JSON.stringify({status:'COMPLETED',html_pages:results.length,sitemap_urls:locs.length,results},null,2));
 console.log(`COMPLETED: ${results.length} HTML pages; ${locs.length} sitemap URLs; unique title/H1, descriptions, canonical, JSON-LD, demo/draft exclusion and robots checked.`);

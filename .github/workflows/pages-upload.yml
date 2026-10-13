@@ -1,0 +1,78 @@
+name: Pages upload
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: 'Upload after validation (false validates without credentials)'
+        type: boolean
+        default: false
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-upload-main
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' || vars.PAGES_AUTO_DEPLOY == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6
+        with:
+          run_install: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Quality gates
+        uses: ./.github/actions/gates
+        with:
+          site-url: 'https://sublustrumguide.wiki'
+        env:
+          CF_PAGES_COMMIT_SHA: ${{ github.sha }}
+
+      - name: Audit production metadata
+        run: node scripts/audit-production.mjs
+
+      - name: Stage Pages upload
+        run: node scripts/prepare-pages-upload.mjs
+        env:
+          PRODUCTION_LAUNCHED: ${{ vars.PRODUCTION_LAUNCHED }}
+
+      # Only this step receives the Cloudflare credential. No PR trigger.
+      # PAGES_AUTO_DEPLOY remains unset until repository credential use is authorized.
+      - name: Upload to Cloudflare Pages
+        if: github.event_name == 'push' || inputs.deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: e26c192b02bb6ba662ec2e8a64a2c3a7
+          CI: 'true'
+        run: |
+          set -euo pipefail
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo 'Missing authorized CLOUDFLARE_API_TOKEN repository secret.' >&2
+            exit 1
+          fi
+          pnpm dlx wrangler@4.149.0 pages deploy reports/pages-upload --project-name=sublustrum-guide-preview --branch=main --commit-hash="$GITHUB_SHA"
+
+      - name: Record validation mode
+        if: github.event_name == 'workflow_dispatch' && !inputs.deploy
+        run: echo 'Quality gates and upload staging passed. No credential used and no deployment performed.' >> "$GITHUB_STEP_SUMMARY"
