@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED",
+  "query": "sublustrum",
+  "requested_market": "US, then Worldwide/GB/CA/AU separately",
+  "requested_period": "last 28–30 days",
+  "actual_market": null,
+  "actual_period": null,
+  "metrics": [],
+  "reason": "In-app browser redirected to activation page; create/getTab timed out. No subscription access or export confirmed."
+}

@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-13",
+  "source": "Steam appdetails official API",
+  "videos": [
+    {
+      "title": "Sublustrum - Official Open Playtest Trailer",
+      "url": "https://video.akamai.steamstatic.com/store_trailers/4151300/761813543/b173323ef0c13d47d4cdfc447bdf8e68b20a0bb5/1791366541/hls_264_master.m3u8?t=1791806505",
+      "creator": "Official Steam product media",
+      "published_at": null,
+      "views": null,
+      "timestamp": null,
+      "game_version": "remake promotional trailer",
+      "puzzle": null,
+      "proven_steps": [],
+      "confidence": "A existence/title; not walkthrough evidence"
+    },
+    {
+      "title": "Sublustrum – Official Trailer Announcement [EN]",
+      "url": "https://video.akamai.steamstatic.com/store_trailers/4151300/2072036173/a63e228b2901c3ae0412f1f9656683a84fa75294/1764157413/hls_264_master.m3u8?t=1764166773",
+      "creator": "Official Steam product media",
+      "published_at": null,
+      "views": null,
+      "timestamp": null,
+      "game_version": "remake promotional trailer",
+      "puzzle": null,
+      "proven_steps": [],
+      "confidence": "A existence/title; not walkthrough evidence"
+    }
+  ],
+  "youtube_current_playthrough": "UNAVAILABLE"
+}

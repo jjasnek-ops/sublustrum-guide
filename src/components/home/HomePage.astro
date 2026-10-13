@@ -85,6 +85,7 @@ function trendingLabel(link: QuickLink): string {
 >
   {/* ─────────────────────────────── Hero ─────────────────────────────── */}
   <section class="relative flex min-h-[52vh] items-center overflow-hidden border-b border-border md:min-h-[68vh]">
+    {site.heroImage && <img src={site.heroImage} alt="" aria-hidden="true" width="1600" height="900" fetchpriority="high" class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-[0.15] dark:opacity-25" />}
     {/* Subtle theme-color gradient backdrop — gives the hero a visual anchor
         without requiring an image asset. Sits behind the watermark. */}
     <div

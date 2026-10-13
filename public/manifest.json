@@ -1,11 +1,11 @@
 {
-  "name": "Anvil Quest Wiki",
-  "short_name": "AQ Wiki",
-  "description": "Complete Anvil Quest wiki with boss guides, codes, and tier lists.",
+  "name": "Sublustrum Wiki",
+  "short_name": "SG",
+  "description": "Sublustrum remake guides: Steam playtest access, sound-puzzle hints, version notes and PC requirements, with dated sources and spoiler controls.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#f36716",
+  "theme_color": "#bda37a",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

@@ -20,7 +20,8 @@ jobs:
     if: >-
       github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.event == 'push' &&
-      github.event.workflow_run.head_branch == 'main'
+      github.event.workflow_run.head_branch == 'main' &&
+      vars.PRODUCTION_LAUNCHED == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:

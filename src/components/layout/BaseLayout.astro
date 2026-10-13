@@ -292,7 +292,7 @@ const privacyLabel = consent?.privacyLabel ?? footerStrings.privacyPolicy ?? 'Pr
     {jsonLd.map((d) => <JsonLd data={d} />)}
 
     {/* No-FOUC theme init — runs before first paint. */}
-    <script is:inline>
+    <script is:inline define:vars={{ defaultTheme: site.defaultTheme ?? 'light' }}>
       (() => {
         let stored = null;
         try {
@@ -300,8 +300,8 @@ const privacyLabel = consent?.privacyLabel ?? footerStrings.privacyPolicy ?? 'Pr
         } catch (e) {
           /* storage unavailable */
         }
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (stored === 'dark' || stored === 'black' || (!stored && prefersDark)) {
+        const theme = stored || defaultTheme;
+        if (theme === 'dark' || theme === 'black') {
           document.documentElement.classList.add('dark');
           if (stored === 'black') document.documentElement.classList.add('black');
         }

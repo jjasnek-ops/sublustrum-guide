@@ -1,16 +1,16 @@
 {
-  "name": "anvilwiki",
+  "name": "sublustrum-guide",
   "version": "2.37.0",
   "type": "module",
-  "description": "Open-source game wiki site template. Astro + Cloudflare Pages. Free, fast, beginner-friendly.",
+  "description": "Unofficial, evidence-based guides for the Sublustrum remake and Steam playtest.",
   "license": "MIT",
-  "homepage": "https://anvil.wiki",
+  "homepage": "https://sublustrumguide.wiki",
   "repository": {
     "type": "git",
-    "url": "https://github.com/PNGTRID/AnvilWiki.git"
+    "url": "https://github.com/jjasnek-ops/sublustrum-guide.git"
   },
   "bugs": {
-    "url": "https://github.com/PNGTRID/AnvilWiki/issues"
+    "url": "https://github.com/jjasnek-ops/sublustrum-guide/issues"
   },
   "keywords": [
     "astro",
@@ -33,7 +33,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "postbuild": "pagefind --site dist && node scripts/transpile-pagefind.mjs && tsx scripts/write-indexnow-key.ts",
+    "postbuild": "pagefind --site dist && node scripts/transpile-pagefind.mjs && tsx scripts/write-indexnow-key.ts && node scripts/prepare-delivery.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "typecheck": "astro check",

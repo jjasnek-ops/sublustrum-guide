@@ -28,10 +28,9 @@ export interface NavigationItem {
 
 /** Menu order = array order — every consumer renders by physical position. */
 export const NAVIGATION_CONFIG: NavigationItem[] = [
-  { key: 'bosses', path: '/bosses', icon: 'lucide:swords', isContentType: true },
   { key: 'guides', path: '/guides', icon: 'lucide:book-open', isContentType: true },
-  { key: 'items', path: '/items', icon: 'lucide:package', isContentType: true },
-  { key: 'codes', path: '/codes', icon: 'lucide:gift', isContentType: true },
+  { key: 'puzzles', path: '/puzzles', icon: 'lucide:radio', isContentType: true },
+  { key: 'updates', path: '/updates', icon: 'lucide:clock', isContentType: true },
 ];
 
 /** Derived list of content type slugs (e.g. ['bosses', 'guides', 'items', 'codes']). */

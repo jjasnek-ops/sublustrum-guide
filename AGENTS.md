@@ -1,5 +1,26 @@
 # AGENTS.md
 
+## This initialized site
+
+This workspace is Sublustrum Guide, an independent English remake guide,
+canonical origin https://sublustrumguide.wiki. Upstream AnvilWiki v2.37.0 is
+recorded below for provenance; its demo history is not current game evidence.
+Read reports/current-delivery-status.md and reports/next-actions.md to resume.
+Do not rerun apply-template on this initialized site.
+
+Steam app 4151300 currently credits Brickworks Games / HypeTrain Digital and
+lists Q1 2027. The October 12–25, 2026 playtest covers Chapter One. Never treat
+Outcry/2008 walkthrough steps or community numeric answers as remake proof.
+Puzzle solutions need current A/B evidence; complete-route drafts remain draft
+and noindex. See research/evidence-ledger.json and research/page-matrix.md.
+
+Site gates are documented in docs/site-test-scope.md. Eight upstream demo-only
+suites are explicitly not applicable; retained 16 suites must pass. Production
+metadata audit and browser QA must also pass. Keep game copy in config/MDX,
+advertising and analytics disabled until real authorized identifiers exist.
+User has authorized initial repository push and production launch; payment,
+new account/security authorization and irreversible changes still need input.
+
 Workspace instructions for ZCode agents working on AnvilWiki.
 
 ## Repository Purpose

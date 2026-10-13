@@ -24,6 +24,9 @@ export interface SiteConfig {
    * if you run no social channels, set this.
    */
   contactEmail?: string;
+  defaultTheme?: 'light' | 'dark';
+  logoIcon?: string;
+  heroImage?: string;
   social: {
     /** Official game website URL (the game itself, not the wiki). */
     official: string;
@@ -62,37 +65,30 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Anvil Quest Wiki',
-  shortName: 'AQ Wiki',
-  description:
-    'Complete Anvil Quest wiki with boss guides, tier lists, codes, item locations, and beginner tips. Every guide carries a last-verified date.',
-  domain: 'anvil.wiki',
-  tagline: 'Your forge for everything Anvil Quest',
-  legalNotice:
-    'Anvil Quest Wiki is a fan-made community site. Not affiliated with or endorsed by the game developer.',
-  // 👉 APPLY TEMPLATE: set a real address if you run no social channels —
-  // the contact page renders it as a mailto link.
+  name: 'Sublustrum Guide',
+  shortName: 'Sublustrum Guide',
+  description: 'Sublustrum remake guides: Steam playtest access, sound-puzzle hints, version notes and PC requirements, with dated sources and spoiler controls.',
+  domain: 'sublustrumguide.wiki',
+  tagline: 'Unofficial walkthrough, puzzles & hints',
+  legalNotice: 'Sublustrum Guide is an unofficial fan guide. Not affiliated with Brickworks Games, HypeTrain Digital or Phantomery Interactive.',
+  // Set a real address if you run no social channels — the contact page
+  // renders it as a mailto link.
   contactEmail: '',
+  defaultTheme: 'dark',
+  logoIcon: 'lucide:radio',
+  heroImage: '/images/reference/steam-0.webp',
   social: {
-    official: 'https://example.com/anvil-quest',
-    discord: 'https://discord.gg/example',
-    youtube: 'https://youtube.com/@example',
-    twitter: 'https://twitter.com/example',
-    reddit: 'https://reddit.com/r/anvilquest',
+    official: 'https://sublustrum.net',
   },
-  // 👉 APPLY TEMPLATE: point these at the game's real canonical pages.
-  sameAs: [
-    'https://example.com/anvil-quest',
-    'https://en.wikipedia.org/wiki/Anvil_Quest',
-  ],
   game: {
-    name: 'Anvil Quest',
-    platform: 'Roblox',
-    developer: 'Forge Studios',
-    genre: 'Fantasy RPG',
-    releaseDate: '2026-01-15',
+    name: 'Sublustrum',
+    platform: 'Steam / PC',
+    developer: 'Brickworks Games',
+    genre: 'Psychological Adventure / Puzzle',
+    releaseDate: '',
   },
-  // hero.webp is 1200×630 (the recommended OG share aspect ratio).
+  // og:image dims of the SHIPPED hero.webp — if you replace public/images/hero.webp,
+  // update these in src/config/site.ts to match (wrong dims mis-crop share cards).
   ogImageWidth: 1200,
   ogImageHeight: 630,
 };

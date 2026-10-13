@@ -12,11 +12,11 @@
 @layer base {
   :root {
     /* Light mode theme color — Anvil orange (forge fire). */
-    --brand: 22 90% 52%;
-    --brand-light: 22 90% 62%;
+    --brand: 37 34% 61%;
+    --brand-light: 37 34% 71%;
     /* Split H/S for derived shades (e.g. darker button backgrounds). */
-    --brand-h: 22;
-    --brand-s: 90%;
+    --brand-h: 37;
+    --brand-s: 34%;
     /* Text-safe shade of the brand: --brand at 52% lightness is only 3.1:1
        on white (WCAG AA needs 4.5:1 for text). Derived from the H/S splits,
        so fork themes that only edit --brand/--brand-light stay consistent. */
@@ -25,10 +25,10 @@
 
   .dark {
     /* Dark mode theme color — slightly deeper. */
-    --brand: 22 85% 48%;
-    --brand-light: 22 85% 58%;
-    --brand-h: 22;
-    --brand-s: 85%;
+    --brand: 37 29% 57%;
+    --brand-light: 37 29% 67%;
+    --brand-h: 37;
+    --brand-s: 29%;
     --brand-text: var(--brand-h) var(--brand-s) 52%;
   }
 }
@@ -46,13 +46,13 @@
   }
 
   .dark {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --muted: 217 33% 14%;
-    --muted-foreground: 215 20% 65%;
-    --border: 217 33% 18%;
-    --card: 222 47% 10%;
-    --card-foreground: 210 40% 98%;
+    --background: var(--brand-h) 12% 7%;
+    --foreground: var(--brand-h) 18% 92%;
+    --muted: var(--brand-h) 10% 13%;
+    --muted-foreground: var(--brand-h) 10% 69%;
+    --border: var(--brand-h) 12% 22%;
+    --card: var(--brand-h) 12% 10%;
+    --card-foreground: var(--brand-h) 18% 92%;
   }
 
   /* AMOLED black (html.dark.black) — pure-black surfaces for OLED phones:
@@ -77,6 +77,12 @@
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+  }
+
+  h1 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 500 !important;
+    line-height: 1.1;
   }
 
   /* Prevent FOUC: apply dark class before paint. */
