@@ -1,65 +1,85 @@
-# Launch runbook (canonical-domain deployment pending)
+# Sublustrum Guide launch and maintenance
 
-## Current state — 2026-10-13 13:47 Asia/Shanghai
+The canonical website is live at https://sublustrumguide.wiki/ . First indexable
+launch: October 13, 2026, 15:37 Asia/Shanghai. Detailed deployment IDs and actual
+evidence live in gitignored reports/canonical-launch-verified.md.
 
-Cloudflare login is confirmed. Independently deployed and tested preview:
-https://sublustrum-guide-preview.pages.dev/ . Project ID
-6b7cc5af-c5ca-4677-b8d3-538d01ed44ea; deployment
-661bc302-ff9b-4907-ab3f-58aee81dfc59; source commit
-2029b4e388254a4e98631a2a9fb50f428f0575d4. Preview uses direct upload, has no Git
-source and is intentionally noindex. Its isolated staged headers must never be
-copied into the canonical site's production headers.
+Repository: https://github.com/jjasnek-ops/sublustrum-guide . Actual AnvilWiki
+v2.37.0 upstream: 9d36b1bac488d3bbef0d37540c94594b4fe06680; MIT retained.
 
-The intended Git-integrated sublustrum-guide project was not created: API error
-8000011 requires Git installation repair. Current OAuth is sufficient for Pages
-but Zone creation was rejected for missing account.zone.create. A subsequently
-supplied API Token was verified active and used transiently; it also failed Zone
-creation with the same permission error and Git creation with 8000011. Its
-account listing returned empty; this does not establish its complete scope.
-Local API Token input may be supplied as CLOUDFLARE_API_TOKEN in .env.local
-(gitignored) or environment. Never put it in a commit or chat message.
+## Current hosting
 
-Only the section below which describes the canonical/Git-integrated launch is
-still pending. Preview HTTPS, all 25 sitemap pages, 404, hints, mobile and search
-were actually verified; this does not establish canonical-domain launch.
+Cloudflare account e26c192b02bb6ba662ec2e8a64a2c3a7 serves the apex from Direct
+Upload Pages project sublustrum-guide-preview (6b7cc5af-c5ca-4677-b8d3-538d01ed44ea).
+Its label does not change the canonical origin. The Free Zone is active;
+Spaceship uses armfazh.ns.cloudflare.com and laura.ns.cloudflare.com. DNSSEC
+was migrated using the new Cloudflare DS without disabling DNSSEC. Apex and
+WWW CNAME records are proxied; WWW301 preserves the article path and query.
 
-Repository: https://github.com/jjasnek-ops/sublustrum-guide
-Canonical origin: https://sublustrumguide.wiki
-AnvilWiki v2.37.0 upstream: 9d36b1bac488d3bbef0d37540c94594b4fe06680.
+Canonical HTTPS, seven browser pages, mobile layout, images, hints, Pagefind,
+404 and all 25 sitemap URLs passed public checks. Canonical headers have no
+global noindex; Pages hostname headers remain noindex. Keep host-specific rules
+in public/_headers; do not add global preview noindex to the launched domain.
 
-Cloudflare Pages Git integration: connect this repository, main branch, build
-command `pnpm build`, output `dist`, Node 22 or newer compatible version and
-pnpm from package.json (11.1.1). `wrangler.toml` carries SITE_URL; optional ads,
-comments and analytics are blank. The separate preview project above is verified;
-the intended Git-integrated canonical project remains pending. Do not substitute
-GitHub Pages or another hosting platform.
+## Deploying changes
 
-Authentication: `npx wrangler login` then `npx wrangler whoami`. Prefer creating
-a Git-integrated Pages project via the authorized dashboard when that session
-is accessible. Direct-upload projects cannot later switch to Git integration;
-choose the intended integration before creating a project.
+Node22 and pnpm11.1.1 from package.json. Run the gates in
+[site-test-scope.md](site-test-scope.md), then build with CF_PAGES_COMMIT_SHA
+set to the exact committed HEAD. astro.config.ts reads the public GA4 ID from
+wrangler.toml when no environment override exists; no second ID is required.
+Run node scripts/audit-production.mjs after build.
 
-The apex domain currently uses Spaceship nameservers. Cloudflare requires the
-apex to be a zone in the same account as the Pages project, with nameservers
-pointing to Cloudflare. First inventory/import existing DNS records, verify all
-unrelated records, then update registrar nameservers with domain-owner access.
-Never delete unrelated DNS entries. Add the domain through Pages Custom domains;
-a standalone CNAME without that association is insufficient.
+For existing authorized Wrangler OAuth, set PRODUCTION_LAUNCHED=true and a new
+PAGES_UPLOAD_SUBDIR name, then run node scripts/prepare-pages-upload.mjs.
+It stages under reports and refuses to overwrite an existing directory.
+Deploy that directory with pinned Wrangler4.149.0, explicit account/project,
+branch main and the exact commit hash. Confirm deployment API success and the
+live /.well-known/anvilwiki-deploy.txt marker before reporting it complete.
+Never publish uncommitted source as a clean deployment.
 
-Source: https://developers.cloudflare.com/pages/configuration/custom-domains/
+Native Git integration needs this repository added to the existing Cloudflare
+Pages GitHub app (installation170863434). Its visible access list currently
+contains only battleplan-guides; GitHub requests identity verification before
+editing it. Preserve unrelated existing repository permissions. The user has
+authorized continuing with this repository; no app uninstall is required.
+After that, create sublustrum-guide, main, pnpm build, output dist, Node22,
+pnpm11.1.1. Validate the new project before moving the canonical domain.
 
-After deployment, verify HTTPS, root, sitemap.xml, sitemap-index.xml, robots.txt,
-all hubs/articles, 404, Pagefind search, mobile layout and canonical origin.
-Configure www-to-apex and pages.dev-to-apex redirects only after apex TLS works.
-After all public URL checks pass, set the GitHub variable PRODUCTION_LAUNCHED
-to true to enable the existing IndexNow submission workflow. It is deliberately
-inactive while the canonical origin is not deployed.
-Record actual deployment ID, Pages URL and commit in launch-verification.md.
+The alternative .github/workflows/pages-upload.yml passed a credentials-free
+dry run. PAGES_AUTO_DEPLOY remains unset and no Cloudflare secret was shared
+with GitHub. Saving a credential there remains a separate authorization.
+Do not interpret “the CF webpage works” as permission to share credentials.
 
-GSC/GA4: verify domain property, submit sitemap-index.xml, then track discovery,
-indexing, impressions and clicks separately. Configure PUBLIC_GA_ID only after
-a real property/stream exists; verify an actual page_view with consent. Current
-analytics are disabled. No indexing or traffic claims should be made.
+## Search and analytics
 
-Review at actual launch +3/+7/+14/+28 days. Until launch is confirmed, no dated
-follow-up automation is established.
+GSC domain ownership is verified through an apex TXT record. Keep that record.
+Both sitemap-index.xml and sitemap-0.xml were submitted. The first sitemap
+status showed Couldn't fetch, while the live homepage test succeeded and the
+homepage was discovered from sitemap-0.xml; check the later GSC status before
+claiming sitemap processing success. Homepage indexing was requested.
+Discovery, crawl availability, indexing, impressions and clicks are separate.
+
+GA4 dedicated property558703003, web stream16118920742, measurement ID
+G-TJ0Q9BSF7R. Enhanced measurement is off. The consent banner gates the loader;
+decline keeps it off after reload. Public QA confirmed an accepted real page_view
+received HTTP204 from Google. The dedicated GA4 realtime report also confirmed page_view, session_start and first_visit;
+QA visits do not count as organic traffic. Privacy copy reflects actual behavior.
+
+IndexNow is for participating engines, not Google. Submit only after checking
+the exact live commit and public key. Keep the CI-driven PRODUCTION_LAUNCHED
+repository flag disabled until deployment and source CI are synchronized;
+otherwise a docs-only commit may wait for a deployment that never happens.
+
+## Review schedule and content freeze
+
+Four one-time thread reviews were created for October16, October20, October27
+and November10 at17:00 Asia/Shanghai (launch+3/+7/+14/+28 days). IDs:
+sublustrum-3, sublustrum-7, sublustrum-14, sublustrum-28. They check real evidence,
+save reports and stay quiet when unchanged and non-actionable. Keep this local
+project accessible and the app/computer running for local scheduled work;
+see [official scheduling documentation](https://learn.chatgpt.com/docs/automations?surface=app).
+
+Do not manufacture complete puzzle answers, metrics or daily rewrites. The
+Chapter One complete route remains draft/noindex until current A/B evidence
+exists. Use actual search demand, correctness issues and official build changes
+to decide updates; evaluate whether to freeze investment at day28.

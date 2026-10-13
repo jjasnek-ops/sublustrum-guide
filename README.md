@@ -1,13 +1,20 @@
 # Sublustrum Guide
 
-Independent English guides for the Sublustrum remake and October 2026 Steam playtest. Canonical origin: https://sublustrumguide.wiki . **Production launch is blocked on Zone/DNS access and Cloudflare Git installation repair.**
+Independent English guides for the Sublustrum remake and October 2026 Steam playtest. **Live website: https://sublustrumguide.wiki/**, first indexable launch October 13, 2026.
 
-Public preview: https://sublustrum-guide-preview.pages.dev/ . The preview is
-deployed and tested; it deliberately sends `X-Robots-Tag: noindex, nofollow`.
-Cloudflare login is now confirmed. Canonical-domain launch is still blocked on
-Zone creation/DNS permissions, and Git integration returned installation error
-8000011 with both OAuth and an active user-supplied API Token. The supplied
-Token also cannot create the target Zone; login itself is complete.
+Cloudflare Pages serves the canonical domain from the existing
+`sublustrum-guide-preview` Direct Upload project. Cloudflare DNS, registrar
+nameservers, DNSSEC, apex HTTPS and WWW-to-apex301 are verified. Pages hostnames
+remain noindex. Native Git deployment is pending GitHub identity verification
+and adding this repository to the existing Cloudflare Pages app installation.
+The alternative Actions uploader passed validation but is disabled; no
+Cloudflare credential was stored in GitHub.
+
+Search Console domain ownership is verified, both sitemap-index.xml and
+sitemap-0.xml have been submitted, and Google's live homepage test passed.
+The homepage indexing request was accepted; this does not prove indexing.
+GA4 uses a dedicated property and loads only after visitor consent. Its public
+measurement ID is in `wrangler.toml`; local/CI Astro builds read that same ID.
 
 Steam app 4151300 currently credits Brickworks Games / HypeTrain Digital and lists Q1 2027. The October 12–25 playtest covers Chapter One. Sources checked October 13, 2026. No complete current walkthrough is verified.
 
@@ -23,4 +30,9 @@ Run `pnpm check`, `pnpm lint`, `pnpm test`, `pnpm check-config`, `pnpm check-i18
 
 See [test scope](docs/site-test-scope.md), [launch runbook](docs/launch-runbook.md), [page matrix](research/page-matrix.md) and [evidence ledger](research/evidence-ledger.md). Local resumable state/screenshots: gitignored `reports/`. Raw downloaded evidence remains local in `research/raw/`; sanitized research is committed.
 
-Six articles are locally publishable. The Chapter One sample remains draft/noindex. Advertising, comments and analytics are disabled. No search volume, rankings, traffic, indexing or revenue is invented. Do not reinitialize this site.
+Six articles are published. The Chapter One sample remains draft/noindex.
+Advertising and comments are disabled. GA4 is optional and consent gated;
+`scripts/audit-analytics.mjs` checks decline behavior and a real collection
+response in an isolated public browser. QA visits are not organic traffic.
+No search volume, rankings, traffic, indexing or revenue is invented. Do not
+reinitialize this site.
