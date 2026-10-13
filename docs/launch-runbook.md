@@ -1,5 +1,26 @@
 # Launch runbook (actual deployment pending)
 
+## Current state — 2026-10-13 13:47 Asia/Shanghai
+
+Cloudflare login is confirmed. Independently deployed and tested preview:
+https://sublustrum-guide-preview.pages.dev/ . Project ID
+6b7cc5af-c5ca-4677-b8d3-538d01ed44ea; deployment
+661bc302-ff9b-4907-ab3f-58aee81dfc59; source commit
+2029b4e388254a4e98631a2a9fb50f428f0575d4. Preview uses direct upload, has no Git
+source and is intentionally noindex. Its isolated staged headers must never be
+copied into the canonical site's production headers.
+
+The intended Git-integrated sublustrum-guide project was not created: API error
+8000011 requires Git installation repair. Current OAuth is sufficient for Pages
+but Zone creation was rejected for missing account.zone.create. No separate
+Cloudflare API Token was found in process/user/machine variables or workspace.
+Local API Token input may be supplied as CLOUDFLARE_API_TOKEN in .env.local
+(gitignored) or environment. Never put it in a commit or chat message.
+
+Only the section below which describes the canonical/Git-integrated launch is
+still pending. Preview HTTPS, all 25 sitemap pages, 404, hints, mobile and search
+were actually verified; this does not establish canonical-domain launch.
+
 Repository: https://github.com/jjasnek-ops/sublustrum-guide
 Canonical origin: https://sublustrumguide.wiki
 AnvilWiki v2.37.0 upstream: 9d36b1bac488d3bbef0d37540c94594b4fe06680.
