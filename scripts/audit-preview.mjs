@@ -28,7 +28,9 @@ try{
  await page.screenshot({path:`reports/screenshots/${auditKind}-home-390.png`,fullPage:true});
  await page.getByRole('button',{name:'Search',exact:true}).click();
  await page.getByPlaceholder('Search guides, hints and updates...').fill('Echophone');
- await page.waitForSelector('.pagefind-ui__result-link');
+ // Pagefind updates results asynchronously; an existing result from the
+ // previous/default query is not evidence that this query has completed.
+ await page.locator('.pagefind-ui__result-link').filter({hasText:'Echophone'}).first().waitFor({state:'visible'});
  const searchResults=await page.locator('.pagefind-ui__result-link').allTextContents();
  if(!searchResults.some(t=>t.includes('Echophone')))throw new Error('Public search result absent');
  await page.screenshot({path:`reports/screenshots/${auditKind}-search-390.png`,fullPage:true});
