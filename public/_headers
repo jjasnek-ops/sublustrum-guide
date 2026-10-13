@@ -50,3 +50,10 @@
 # unit pages themselves. Same-origin framing is unaffected.
 /ads/*
   Content-Security-Policy: frame-ancestors 'self'
+
+# Keep alternate Pages hostnames out of search; the canonical domain can index.
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
