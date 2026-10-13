@@ -2,13 +2,12 @@
 
 Independent English guides for the Sublustrum remake and October 2026 Steam playtest. **Live website: https://sublustrumguide.wiki/**, first indexable launch October 13, 2026.
 
-Cloudflare Pages serves the canonical domain from the existing
-`sublustrum-guide-preview` Direct Upload project. Cloudflare DNS, registrar
-nameservers, DNSSEC, apex HTTPS and WWW-to-apex301 are verified. Pages hostnames
-remain noindex. Native Git deployment is pending GitHub identity verification
-and adding this repository to the existing Cloudflare Pages app installation.
-The alternative Actions uploader passed validation but is disabled; no
-Cloudflare credential was stored in GitHub.
+Cloudflare Pages serves the canonical domain from the Git-integrated
+`sublustrum-guide` project. Pushes to main automatically build and deploy.
+Cloudflare DNS, registrar nameservers, DNSSEC, apex HTTPS and WWW-to-apex301
+are verified. Pages hostnames remain noindex. The earlier Direct Upload project
+is retained as a noindex fallback. The alternative Actions uploader is disabled;
+no Cloudflare credential was stored in GitHub.
 
 Search Console domain ownership is verified, both sitemap-index.xml and
 sitemap-0.xml have been submitted, and Google's live homepage test passed.

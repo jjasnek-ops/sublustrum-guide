@@ -71,7 +71,7 @@ jobs:
             echo 'Missing authorized CLOUDFLARE_API_TOKEN repository secret.' >&2
             exit 1
           fi
-          pnpm dlx wrangler@4.149.0 pages deploy reports/pages-upload --project-name=sublustrum-guide-preview --branch=main --commit-hash="$GITHUB_SHA"
+          pnpm dlx wrangler@4.149.0 pages deploy reports/pages-upload --project-name=sublustrum-guide --branch=main --commit-hash="$GITHUB_SHA"
 
       - name: Record validation mode
         if: github.event_name == 'workflow_dispatch' && !inputs.deploy

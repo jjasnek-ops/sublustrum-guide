@@ -9,8 +9,8 @@ v2.37.0 upstream: 9d36b1bac488d3bbef0d37540c94594b4fe06680; MIT retained.
 
 ## Current hosting
 
-Cloudflare account e26c192b02bb6ba662ec2e8a64a2c3a7 serves the apex from Direct
-Upload Pages project sublustrum-guide-preview (6b7cc5af-c5ca-4677-b8d3-538d01ed44ea).
+Cloudflare account e26c192b02bb6ba662ec2e8a64a2c3a7 serves the apex from native
+Git Pages project sublustrum-guide (a4f9d668-a864-4ed5-bfaa-8bb98af05e3f).
 Its label does not change the canonical origin. The Free Zone is active;
 Spaceship uses armfazh.ns.cloudflare.com and laura.ns.cloudflare.com. DNSSEC
 was migrated using the new Cloudflare DS without disabling DNSSEC. Apex and
@@ -29,7 +29,12 @@ set to the exact committed HEAD. astro.config.ts reads the public GA4 ID from
 wrangler.toml when no environment override exists; no second ID is required.
 Run node scripts/audit-production.mjs after build.
 
-For existing authorized Wrangler OAuth, set PRODUCTION_LAUNCHED=true and a new
+Normal deployment is automatic on main pushes: pnpm build, output dist.
+Cloudflare's existing GitHub app170863434 can read this target repository;
+unrelated existing repository access was retained. The old Direct Upload project
+6b7cc5af-c5ca-4677-b8d3-538d01ed44ea is retained as a noindex fallback.
+
+For an authorized manual fallback using Wrangler OAuth, set PRODUCTION_LAUNCHED=true and a new
 PAGES_UPLOAD_SUBDIR name, then run node scripts/prepare-pages-upload.mjs.
 It stages under reports and refuses to overwrite an existing directory.
 Deploy that directory with pinned Wrangler4.149.0, explicit account/project,
@@ -37,13 +42,12 @@ branch main and the exact commit hash. Confirm deployment API success and the
 live /.well-known/anvilwiki-deploy.txt marker before reporting it complete.
 Never publish uncommitted source as a clean deployment.
 
-Native Git integration needs this repository added to the existing Cloudflare
-Pages GitHub app (installation170863434). Its visible access list currently
-contains only battleplan-guides; GitHub requests identity verification before
-editing it. Preserve unrelated existing repository permissions. The user has
-authorized continuing with this repository; no app uninstall is required.
-After that, create sublustrum-guide, main, pnpm build, output dist, Node22,
-pnpm11.1.1. Validate the new project before moving the canonical domain.
+Native Git setup is complete: source jjasnek-ops/sublustrum-guide, main,
+pnpm build and dist. First native build and the exact public commit marker
+were verified before detaching the old domain association, attaching the new
+association, and changing only the apex CNAME target to sublustrum-guide.pages.dev.
+The switch briefly returned522 during activation; HTTPS200 was then confirmed.
+Do not ask for GitHub identity verification or Cloudflare login again.
 
 The alternative .github/workflows/pages-upload.yml passed a credentials-free
 dry run. PAGES_AUTO_DEPLOY remains unset and no Cloudflare secret was shared
@@ -67,8 +71,8 @@ QA visits do not count as organic traffic. Privacy copy reflects actual behavior
 
 IndexNow is for participating engines, not Google. Submit only after checking
 the exact live commit and public key. Keep the CI-driven PRODUCTION_LAUNCHED
-repository flag disabled until deployment and source CI are synchronized;
-otherwise a docs-only commit may wait for a deployment that never happens.
+repository flag enabled once native deployment and source CI are synchronized.
+The workflow waits for the exact live commit and public key before submission.
 
 ## Review schedule and content freeze
 
