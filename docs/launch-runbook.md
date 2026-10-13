@@ -1,4 +1,4 @@
-# Launch runbook (actual deployment pending)
+# Launch runbook (canonical-domain deployment pending)
 
 ## Current state — 2026-10-13 13:47 Asia/Shanghai
 
@@ -12,8 +12,10 @@ copied into the canonical site's production headers.
 
 The intended Git-integrated sublustrum-guide project was not created: API error
 8000011 requires Git installation repair. Current OAuth is sufficient for Pages
-but Zone creation was rejected for missing account.zone.create. No separate
-Cloudflare API Token was found in process/user/machine variables or workspace.
+but Zone creation was rejected for missing account.zone.create. A subsequently
+supplied API Token was verified active and used transiently; it also failed Zone
+creation with the same permission error and Git creation with 8000011. Its
+account listing returned empty; this does not establish its complete scope.
 Local API Token input may be supplied as CLOUDFLARE_API_TOKEN in .env.local
 (gitignored) or environment. Never put it in a commit or chat message.
 
@@ -28,8 +30,9 @@ AnvilWiki v2.37.0 upstream: 9d36b1bac488d3bbef0d37540c94594b4fe06680.
 Cloudflare Pages Git integration: connect this repository, main branch, build
 command `pnpm build`, output `dist`, Node 22 or newer compatible version and
 pnpm from package.json (11.1.1). `wrangler.toml` carries SITE_URL; optional ads,
-comments and analytics are blank. No Cloudflare project or Pages URL has yet
-been verified. Do not substitute GitHub Pages or another hosting platform.
+comments and analytics are blank. The separate preview project above is verified;
+the intended Git-integrated canonical project remains pending. Do not substitute
+GitHub Pages or another hosting platform.
 
 Authentication: `npx wrangler login` then `npx wrangler whoami`. Prefer creating
 a Git-integrated Pages project via the authorized dashboard when that session

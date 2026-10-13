@@ -1,12 +1,13 @@
 # Sublustrum Guide
 
-Independent English guides for the Sublustrum remake and October 2026 Steam playtest. Canonical origin: https://sublustrumguide.wiki . **Production launch is blocked on Cloudflare authentication and domain DNS access.**
+Independent English guides for the Sublustrum remake and October 2026 Steam playtest. Canonical origin: https://sublustrumguide.wiki . **Production launch is blocked on Zone/DNS access and Cloudflare Git installation repair.**
 
 Public preview: https://sublustrum-guide-preview.pages.dev/ . The preview is
 deployed and tested; it deliberately sends `X-Robots-Tag: noindex, nofollow`.
 Cloudflare login is now confirmed. Canonical-domain launch is still blocked on
 Zone creation/DNS permissions, and Git integration returned installation error
-8000011. A suitably scoped local API Token can be used to continue.
+8000011 with both OAuth and an active user-supplied API Token. The supplied
+Token also cannot create the target Zone; login itself is complete.
 
 Steam app 4151300 currently credits Brickworks Games / HypeTrain Digital and lists Q1 2027. The October 12–25 playtest covers Chapter One. Sources checked October 13, 2026. No complete current walkthrough is verified.
 
