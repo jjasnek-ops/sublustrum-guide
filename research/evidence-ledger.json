@@ -124,5 +124,19 @@
     "conflicting_evidence": null,
     "confidence_level": "C",
     "allowed_to_publish": false
+  },
+  {
+    "fact_id": "F10",
+    "statement": "October 16 official announcement reports five live playtest fixes: English diary voice-over ending, low-settings item red glow, Steam Deck gamepad detection and cutscenes, last-page note hint, and New Game progress-reset warning. No puzzle combinations or Steam Deck Verified rating are established.",
+    "game_version": "Oct 2026 playtest",
+    "chapter": "1",
+    "source_title": "100,000 Wishlists for Sublustrum. Minor Playtest Fixes.",
+    "source_url": "https://store.steampowered.com/news/app/4151300/view/1846651706681508",
+    "published_at": "2026-10-16",
+    "verified_at": "2026-10-17",
+    "evidence_detail": "reports/review-day3-2026-10-17/steam-news.json (gid 1846651706681508, timestamp 1792157723)",
+    "conflicting_evidence": null,
+    "confidence_level": "A",
+    "allowed_to_publish": true
   }
 ]
