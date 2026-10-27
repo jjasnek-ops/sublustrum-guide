@@ -158,7 +158,7 @@
     "hero": {
       "badge": "FIELD NOTES / OCTOBER 2026 PLAYTEST",
       "title": "Sublustrum. Find your way.",
-      "description": "An unofficial guide to the Sublustrum remake. Chapter One is open for testing October 12–25, 2026. Start with verified playtest information and spoiler-light sound-puzzle guidance. Full release: Q1 2027; exact day unannounced.",
+      "description": "An unofficial guide to the Sublustrum remake. Chapter One testing began October 12 and is extended through November 9, 2026. Start with verified playtest information and spoiler-light sound-puzzle guidance. Full release: Q1 2027; exact day unannounced.",
       "ctaPrimary": "Official game website",
       "ctaSecondary": "Explore puzzle hints",
       "videoId": ""
@@ -215,7 +215,7 @@
             },
             {
               "label": "2",
-              "detail": "Explore Chapter One: The public testing window is October 12–25, 2026.",
+              "detail": "Explore Chapter One: Testing began October 12 and is extended through November 9, 2026.",
               "badge": "PLAYTEST"
             },
             {
@@ -257,7 +257,7 @@
       "items": [
         {
           "question": "Is the full Sublustrum remake out?",
-          "answer": "Steam lists Q1 2027 and marks the full game as coming soon. The October 12–25, 2026 open playtest covers Chapter One. Checked October 13, 2026."
+          "answer": "Steam lists Q1 2027 and marks the full game as coming soon. The separate Chapter One playtest began October 12 and is extended through November 9, 2026. Checked October 28, 2026."
         },
         {
           "question": "How do I join the Sublustrum playtest?",

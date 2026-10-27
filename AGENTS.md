@@ -9,7 +9,8 @@ Read reports/current-delivery-status.md and reports/next-actions.md to resume.
 Do not rerun apply-template on this initialized site.
 
 Steam app 4151300 currently credits Brickworks Games / HypeTrain Digital and
-lists Q1 2027. The October 12–25, 2026 playtest covers Chapter One. Never treat
+lists Q1 2027. The Chapter One playtest began October 12, 2026; the October 26
+official announcement extended it through November 9. Never treat
 Outcry/2008 walkthrough steps or community numeric answers as remake proof.
 Puzzle solutions need current A/B evidence; complete-route drafts remain draft
 and noindex. See research/evidence-ledger.json and research/page-matrix.md.

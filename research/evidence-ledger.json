@@ -15,7 +15,7 @@
   },
   {
     "fact_id": "F02",
-    "statement": "Open playtest October 12–25, 2026; updated first chapter; Request Access on store.",
+    "statement": "Original October 5 announcement scheduled October 12–25, 2026 Chapter One testing; the end date was superseded by October 26 extension through November 9 (F11). Request Access on store.",
     "game_version": "Oct 2026 playtest",
     "chapter": "1",
     "source_title": "Open Playtest Starts October 12",
@@ -29,7 +29,7 @@
   },
   {
     "fact_id": "F03",
-    "statement": "The October public test opened; Professor home exploration and machinery; ends October 25.",
+    "statement": "October 12 announcement confirmed public Chapter One test opened, with Professor home exploration and machinery. Its original October 25 end date was superseded by F11.",
     "game_version": "Oct 2026 playtest",
     "chapter": "1",
     "source_title": "Open Playtest Is Live",
@@ -136,6 +136,20 @@
     "verified_at": "2026-10-17",
     "evidence_detail": "reports/review-day3-2026-10-17/steam-news.json (gid 1846651706681508, timestamp 1792157723)",
     "conflicting_evidence": null,
+    "confidence_level": "A",
+    "allowed_to_publish": true
+  },
+  {
+    "fact_id": "F11",
+    "statement": "October 26 official announcement extends the Chapter One open playtest through November 9, 2026, superseding October 25. Developers expect one or two more patches before it ends; no cutoff hour, timezone or new puzzle answers are specified.",
+    "game_version": "2026 Chapter One open playtest",
+    "chapter": "1",
+    "source_title": "Sublustrum Open Playtest Extended Until November 9",
+    "source_url": "https://store.steampowered.com/news/app/4151300/view/1847286114044918",
+    "published_at": "2026-10-26",
+    "verified_at": "2026-10-28",
+    "evidence_detail": "reports/review-day14-2026-10-28/steam-news.json (gid 1847286114044918, timestamp 1793020843)",
+    "conflicting_evidence": "October 5/12 announcements stated October 25; superseded by this extension.",
     "confidence_level": "A",
     "allowed_to_publish": true
   }
